@@ -1,27 +1,39 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $num1 = $_POST['number'];
-    $num2 = $_POST['number1'];
+    $num1 = (int)$_POST['number'];
+    $num2 = (int)$_POST['number1'];
     $KQua = $_POST['pheptinh'];
+
+function div($num1,$num2){
+    if($num2===0){
+        throw new Exception('lỗi rồi');
+    }
+    return $num1 / $num2;
 }
-$result = 0;
-if($num2 != 0){
 switch ($KQua) {
     case "phepcong":
         $result = $num1 + $num2;
+        echo $result;
         break;
     case 'pheptru':
         $result = $num1 - $num2;
+        echo $result;
         break;
     case 'phepnhan':
         $result = $num1 * $num2;
+        echo $result;
         break;
     case 'phepchia':
-        $result = $num1 / $num2;
+    try {
+        $result = div($num1,$num2);
+        echo $result;
+    }
+    catch(Exception $e){
+    echo 'Message: '.$e->getMessage();
+    }        
         break;
 }
-echo 'result: ' . $result;
-}else{
-    echo 'lỗi rồi!';
 }
+
+    
 
