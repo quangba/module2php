@@ -34,10 +34,10 @@ switch ($action) {
 
                     // truyen du lieu lay dc tu view sang model
                     $editProduct = $database->updateData($id, $name, $price, $description, $producer);
-                    var_dump($editProduct);
-                    // if ($editProduct) {
-                    //     header('location:index.php?controller=san-pham&action=list');
-                    // }
+                    
+                    if ($editProduct) {
+                        header('location:index.php?controller=san-pham&action=list');
+                    }
                 }
             }
             require_once('views/edit_product.php');
